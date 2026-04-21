@@ -1,3 +1,5 @@
+"use strict";
+
 /*
  * JavaScript
  * Урок №2
@@ -144,3 +146,150 @@ console.log(str.includes("my5")); // проходит по всей строке
 console.log(str.includes("my", "your")); // ищет совпадения в строке с первым параметром если найдет
 // заменит вторым параметром
 console.log(str.split()); // Переводит строку в массив принимая параметр разделитель
+
+/*
+ * JavaScript
+ * Урок №3
+ * Динамическая типизация данных в Javascript. Условия, ветвления.
+ */
+
+alert("Привет JS!!"); // выводит окно с информацией для пользователя блокирует отработку всего
+// дальнейшего скрипта пока не нажата кнопка ок
+console.log("Привет консоль!"); // Выводит информацию в консоль
+
+let answer = confirm("Тебе есть 18 лет?"); // Выводит модальное окно в браузере с текстом в круглых скобках
+// при нажатии ОК будет true, а при нажатии Отмена будет false
+console.log(answer);
+
+let answer2 = prompt("Сколько вам лет?", "18 лет"); // Выводит модальное окно в браузере с текстом в круглых скобках и
+// ожидает ввод данных от пользователя. Ответ всегда приходит в виде строки
+// Второй параметр значение по умолчанию
+// При нажатии Отмена prompt возвращает null
+console.log(answer2);
+
+// Приведение типа данных
+
+console.log(5 + "5"); // 55 при конкатенации преобразует число в строку
+
+console.log(5 - "5"); // 0 при вычитании преобразует в число
+console.log(5 * "5"); // 25 при умножении преобразует в число
+console.log(5 / "5"); // 1 при делении преобразует в число
+console.log(5 / "5ty"); // NaN выведет если не сможет перевести строку в число
+
+console.log(5 == "5"); // true сравнит два числа
+console.log(5 === "5"); // false сравнит число и строку
+
+// Глобальный метод String переводит все переданное в него в строку
+console.log(typeof String(true)); // string
+console.log(typeof String(undefined)); // string
+console.log(typeof String(null)); // string
+console.log(typeof String("123")); // string
+console.log(typeof String(123)); // string
+
+// Глобальный метод Number переводит все переданное в него в число
+console.log(Number(true)); // 1
+console.log(Number(false)); // 0
+console.log(Number(undefined)); // NaN
+console.log(Number(null)); // 0
+console.log(Number("123")); // 123
+console.log(Number("123dvf")); // NaN
+console.log(Number(123)); // 123
+
+// Глобальный метод Boolean
+console.log(Boolean("")); // Вернет false
+console.log(Boolean(null)); // Вернет false
+console.log(Boolean(undefined)); // Вернет false
+console.log(Boolean(NaN)); // Вернет false
+console.log(Boolean(false)); // Вернет false
+// В остальных случаях вернет true
+let a = 10;
+console.log(!!"dfjvvoerj"); // двойное отрицание работает также как метод Boolean
+console.log(10 + ""); //переводит число в строку
+console.log(a.toString()); // метод переводит переменную в строку
+console.log(+"10"); // Переводит строку в число (которую можно перевести)
+
+// Пример
+
+let str = +prompt("Сколько тебе лет?"); // Переводит строку в число если число. если ввели строку будут NaN
+let result = str + 10;
+console.log(result);
+
+console.log(parseInt(str)); // Забирает целое число если начинается с числа. иначе NaN
+console.log(parseFloat(str)); // Забирает целое число c плавающей точкой если начинается с числа. иначе NaN
+//Второй параметр задает систему счисления
+console.log(parseInt("10ff", 2)); // двоичная
+console.log(parseInt("10ff", 16)); // шестнадцатеричная
+
+// Ветвление
+
+/*
+    Если (выходной) {
+      радуемся и спим;
+      потягиваемся;
+    } иначе {
+      умываемся;
+      одеваемся;
+      работаем;
+    }
+*/
+
+if (true) console.log("Истина");
+if (false) console.log("Ложь");
+
+let n = 10;
+if (n == 10) {
+  console.log("Команда 1");
+  console.log("Команда 2");
+  console.log("Команда 3");
+} else if (n == 12) {
+  console.log("Команда 3");
+  console.log("Команда 4");
+  console.log("Команда 5");
+}
+
+switch (n) {
+  case 3:
+    console.log(3);
+    break;
+  case 4:
+    console.log(4);
+    break;
+  case 10:
+    console.log(10);
+    break;
+  case 11:
+    console.log(11);
+    break;
+  default:
+    console.log("Не верно ни одно значение");
+}
+
+switch (n) {
+  case 3:
+    console.log(3);
+    break;
+  case 4:
+  case 10:
+  case 11:
+    console.log(11);
+    break;
+  default:
+    console.log("Не верно ни одно значение");
+}
+// Кейсы всегда проверяются на строгое соответствие
+
+const n = +prompt("Введите число");
+
+switch (true) {
+  case n > 10:
+    console.log("n > 10");
+    break;
+  case n <= 5:
+    console.log("n <= 10");
+  default:
+    console.log("Не верно ни одно значение");
+}
+
+// Тернарный оператор
+
+let result = n === 10 ? 1 : 2; // Если истина до вернется 1 ели ложь то 2
