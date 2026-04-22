@@ -360,3 +360,13 @@ const countSum = function (a, b) {
 console.log(res);
 countSum(3, 5);
 console.log(res);
+
+const countSum = function (a, b, callback) {
+  return a + callback(b);
+};
+
+console.log(
+  countSum(3, 10, function (num) {
+    return num + 2;
+  }),
+);
