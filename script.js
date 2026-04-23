@@ -331,7 +331,7 @@ getMessage();
 
 function cleanMandesOperation() {
    function step(index, str) {
-      console.log(index + " " str);
+      console.log(index + " " + str);
    }
 
    step(1, 'Испачкать руки')
