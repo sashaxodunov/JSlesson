@@ -301,7 +301,7 @@ let result = n === 10 ? 1 : 2; // Если истина до вернется 1 
  */
 
 function getMessage() {
-   alert('Hello world!')
+  alert("Hello world!");
 }
 
 getMessage();
@@ -334,28 +334,28 @@ function cleanMandesOperation() {
       console.log(index + " " + str);
    }
 
-   step(1, 'Испачкать руки')
-   step(2, 'Пойти в ванную комнату')
-   step(3, 'Помыть руки')
+  step(1, "Испачкать руки");
+  step(2, "Пойти в ванную комнату");
+  step(3, "Помыть руки");
 }
 
-cleanMandesOperation()
+cleanMandesOperation();
 
 // переменные созданные в функции не видны за ее приделами
-const countSum = function(a, b) {
-   let res = a + b
-   console.log(res);
-}
-console.log(res);//вызовит ошибку нет такой переменной
-countSum(3, 5)
+const countSum = function (a, b) {
+  let res = a + b;
+  console.log(res);
+};
+console.log(res); //вызовит ошибку нет такой переменной
+countSum(3, 5);
 
 // переменная res будет undefined пока функция не будет объявлена
 
 let res;
 
-const countSum = function(a, b) {
-   res = a + b
-}
+const countSum = function (a, b) {
+  res = a + b;
+};
 
 console.log(res);
 countSum(3, 5);
