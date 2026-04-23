@@ -508,3 +508,42 @@ let urlToImages = pathGenerator('http://mydomain.ru/assets/images/')
 
 console.log(urlToIcons('clock.svg'));
 console.log(urlToImages('man.png'));
+
+/*
+* Урок 7.
+* Знакомимся с объектами и массивами, методы переборов и псевдомассивы 
+*/
+
+let name = 'Alex'
+let key = 'city'
+let city = 'Minsk'
+
+let person = {
+  [key]: city, // динамическое добавление ключей из переменной
+  name: 'Alex',
+  age: 33,
+  job: {
+    position: 'middle-developer',
+    salary: '1.000.000'
+  },
+  say: function(str) {
+    console.log(str)
+  } 
+}
+
+let job = new Object()
+job.position = 'developer'
+person.say('Hello world')
+
+person.age = 33 // добавление в объект person ключ значение age = 33
+person.job = job // записывается ссылка на объект родителя
+person[key] = city
+
+console.log(name);
+console.log(person);
+console.log(job);
+console.log(person['age']);
+
+console.log(person.job === job);
+
+// Массив 12:00
