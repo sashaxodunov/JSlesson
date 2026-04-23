@@ -361,3 +361,48 @@ console.log(res);
 countSum(3, 5);
 console.log(res);
 
+/*
+* Урок 5
+* Циклы. Рекурсия. 
+*/
+
+// Рекурсия
+let potate = 10;
+
+const peelPotato = function(potatoIndex) {
+  if (potatoIndex > 0) {
+    console.log("Картошка № " + potatoIndex + " почищена");
+    potatoIndex--;
+    peelPotato(potatoIndex);
+  }
+}
+
+peelPotato(potatoIndex);
+
+// Циклический оператор 1 for 
+
+for (let i = 10; i > 0; i--) {
+  console.log('Кортошка №' + i + ' почищена');
+}
+// меняем направление счета
+for (let i = 1; i < 11; i++) {
+  if (i === 5) continue; // Пропуск при значении 5 не выполняется
+  if (i === 8) break; // Выход из цикла после значения 8
+  console.log('Кортошка №' + i + ' почищена');
+}
+// выводим всегда пока индекс не будет равен 5
+for (let i = 1; i < 11; i++) {
+  if (i !== 5) console.log('Кортошка №' + i + ' почищена');
+}
+
+// Циклический оператор 2 while
+while (potato > 0) {
+  console.log('Кортошка №' + i + ' почищена');
+  potato--;
+}
+
+// Циклический оператор 2 do while
+do {
+  console.log('Кортошка №' + i + ' почищена');
+  potato--;
+} while (potato > 0)
