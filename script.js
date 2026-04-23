@@ -22,7 +22,7 @@ console.log(typeof myVar); // показывает тип переменной
 myVar = {};
 muVar = [];
 let regExp = /w+/g;
-let func = function () {};
+let func = function () { };
 let error = Error("error message");
 
 // boolean
@@ -330,9 +330,9 @@ getMessage();
 // cleanMandesOperation()
 
 function cleanMandesOperation() {
-   function step(index, str) {
-      console.log(index + " " + str);
-   }
+  function step(index, str) {
+    console.log(index + " " + str);
+  }
 
   step(1, "Испачкать руки");
   step(2, "Пойти в ванную комнату");
@@ -369,7 +369,7 @@ console.log(res);
 // Рекурсия
 let potate = 10;
 
-const peelPotato = function(potatoIndex) {
+const peelPotato = function (potatoIndex) {
   if (potatoIndex > 0) {
     console.log("Картошка № " + potatoIndex + " почищена");
     potatoIndex--;
@@ -406,3 +406,105 @@ do {
   console.log('Кортошка №' + i + ' почищена');
   potato--;
 } while (potato > 0)
+
+
+/*
+* Урок 6
+* Функции. Область видимости и замыкание.
+*/
+
+let a = 5; // переменная находится в глобальной области видимости
+
+function one() {
+  let b = 10;
+  console.log(b); // переменная в логальной области видимости 
+}
+one();
+console.log(b); // в глобальной области видимости она не видна
+
+// если убрать слова let const и var те переменная видится глобально
+a = 5; // переменная находится в глобальной области видимости
+
+function one() {
+  b = 10;
+  console.log(b); // переменная в логальной области видимости 
+}
+one();
+console.log(b); // в глобальной области видимости она видна
+
+function one() {
+  let a = 10;
+  function one() {
+    let a = 15; // локальная переменная
+    console.log(а); // используется ближайшая переменная a = 15 
+  }
+
+  one();
+}
+
+one();
+
+function one(c, d) {
+  // LexicalEnvironment = {c: 3, d: undefined}
+  let a = 10;
+  // LexicalEnvironment = {a: 10, c: 3, d: undefined}
+  console.log(а, c, d);
+  function two() {
+    // LexicalEnvironment = {}
+    // Scdope = {a: 10, c: 3, d: undefined}
+    console.log(а, c);
+  }
+
+  one();
+}
+one();
+
+let y = 5;
+function one(x) {
+  console.log(x + y);
+}
+function two() {
+  let y = 15;
+  one(3)
+}
+two()
+
+// Замыкание это функция внутри функции
+
+function one(x) {
+  function two() {
+    const a = +prompt("Введите число")
+    x--
+
+    console.log(a);
+    console.log(x);
+
+    if (a !== x) {
+      two()
+    }
+  }
+  two()
+}
+one(10)
+
+function counter(n) { // 1 которая попадает в параметр n замкнути внутри функции counter вмести с ананимной функцией
+  return function(x) {
+    return x + n
+  }
+}
+
+let sum = counter(1)
+console.log(sum(15));
+console.log(sum(20));
+
+function counter(url) {
+  return function(imageName) {
+    return url + imageName
+  }
+}
+
+let urlToIcons = pathGenerator('http://mydomain.ru/assets/icons/')
+let urlToImages = pathGenerator('http://mydomain.ru/assets/images/')
+
+console.log(urlToIcons('clock.svg'));
+console.log(urlToImages('man.png'));
