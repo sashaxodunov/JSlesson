@@ -113,3 +113,142 @@ const func = function (a, b, c) {
 };
 
 func(3, 6, 9);
+
+// Методы перебора массивов
+
+const books = [
+  { id: 0, name: "Дорога домой", author: "Виталий Зыков", price: 1200 },
+  { id: 1, name: "Война за выживание", author: "Виталий Зыков", price: 1500 },
+  {
+    id: 2,
+    name: "Мир бесчисленны островов",
+    author: "Виталий Зыков",
+    price: 1300,
+  },
+  { id: 3, name: "Далекая страна", author: "Алекс Кош", price: 950 },
+  { id: 4, name: "Адреналин", author: "Алекс Кош", price: 1650 },
+];
+
+// Добавление и удаление элементов
+
+// concat arr.concat(arg1, arg2...) конкат - данный метод возвращает новый
+// массив который будет состоять из всех элементов исходного массива
+// и новых добавленных элементов
+
+const newArr = books.concat({
+  id: 5,
+  name: "Школа Пепла",
+  author: "Виталий Зыков",
+  price: 1980,
+});
+
+console.log(newArr);
+
+// arr.clice([start], [end]) слайс - возвращает новый массив который копирует
+// элементы исходного массива начиная с индекса [start]
+// и заканчивая индексов [end] не включая его
+
+const newArr1 = books.slice(0, 3);
+console.log(newArr1);
+
+//arr.splice(index, deleteCount, elements) сплайс - часто называют универсальным ножиком может как удалять
+// так и добавлять новые элементы, не возвращает новый массив а изменяет исходный массив
+// указывается индекс удаляемого элемента, указывается количество удаляемых элементов
+books.splice(2, 3);
+console.log(books);
+// третьим параметром идет элемент который мы хотим добавить
+books.splice(2, 3, {
+  id: 5,
+  name: "Школа Пепла",
+  author: "Виталий Зыков",
+  price: 1980,
+});
+console.log(books);
+
+// поиск элементов в массиве
+// let result = arr.find(function(item, index, array) {
+// если true - возвращается текущий элемент и перебор прерывается
+// если все итерации оказались ложными, возвращается undefined
+// });
+// item - очередной элемент
+// index - его индекс
+// array - сам массив
+const result = books.find(function (item, index, array) {
+  return item.name === "Война за выживание";
+});
+
+console.log(result);
+
+const result1 = books.findIndex(function (item, index, array) {
+  return item.name === "Война за выживание";
+});
+
+console.log(result1);
+// findIndex возвращает индекс
+
+// Методы перебора/преобразования
+
+/*
+ *  forEach()
+ *  arr.forEach(function(item, index, array) {
+ *     ... делать что-то с item
+ *  });
+ *  переберет поочереди все элементы массива и применяет к ним функцию колбек
+ */
+
+books.forEach(function (item) {
+  item.price = item.price + "руб";
+});
+
+console.log(books);
+
+/*
+ *  map()
+ *  let result arr.map(function(item, index, array) {
+ *     возвращается новое значение вместо элемента
+ *  });
+ */
+
+const newArr2 = books.map(function (item) {
+  item.price = item.price + "руб";
+  return item;
+});
+
+console.log(newArr2);
+
+const newArr3 = books.map(function (item) {
+  const newObj = {
+    id: item.id,
+    name: item.name,
+  };
+  return newObj;
+});
+
+console.log(newArr3);
+
+/*
+ *  filter()
+ *  let result arr.filter(function(item, index, array) {
+ *     если true - элемент добавляется к результату, и перебор продолжается
+ *     возвращается пустой массив в случае, если ничего не найдено
+ *  });
+ */
+
+const newArr4 = books.filter(function (item) {
+  return item.author === "Виталий Зыков";
+});
+console.log(newArr4);
+
+// Последовательная обработка
+
+/*
+ * let value = arr.reduce(function(previousValue, item, index, array) {
+ *   // ...
+ * }, [initial]);
+ */
+
+const result2 = books.reduce(function (sum, item) {
+  return sum + item.price;
+}, 0);
+
+console.log(result2);
