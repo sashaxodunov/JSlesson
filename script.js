@@ -86,6 +86,7 @@ for (let key in obj) {
 console.log(Object.keys(obj)); // создаем из объекта массив
 
 let array5 = [1, 2, 3, 4];
+
 // цикл переборки массива
 for (let key of array5) {
   console.log(key);
